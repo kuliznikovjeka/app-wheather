@@ -193,14 +193,14 @@ body {
 	&__precipitation {
 		font-size: 14px;
 		margin: 0 auto;
-		max-width: 80px;
-		max-height: 80px;
+		max-width: 160px;
+		max-height: 160px;
 		&:not(:last-child) {
 			margin-bottom: 60px;
 		}
 		@media (max-width: 480px) {
-			max-width: 60px;
-			max-height: 60px;
+			max-width: 120px;
+			max-height: 120px;
 		}
 		img {
 			max-width: 100%;

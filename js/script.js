@@ -16,7 +16,7 @@ function defineLocation(e) {
 		return response.json()
 	})
 		.then(data => {
-			const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png`;
+			const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0]['icon']}@4x.png`;
 			ELEMENTS.DEGREES.textContent = Math.round(data.main['temp']) + ELEMENTS.DEGREES_CELSIUS;
 			ELEMENTS.ICON_WHEATHER.firstElementChild.src = iconUrl;
 			changeLocation();
