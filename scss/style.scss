@@ -1,8 +1,17 @@
 @import "nullstyle.scss";
-@import url("https://fonts.googleapis.com/css?family=Roboto:regular,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Inter:regular,700&display=swap");
+
+$mainColor: #3a3a3a;
+$borderColor: #f56cffc0;
+$redColor: #ff320e;
+
 body {
-	font-family: "Roboto", sans-serif;
+	font-family: "Inter", sans-serif;
 	font-size: 24px;
+	color: $mainColor;
+	@media (max-width: 480px) {
+		font-size: 18px;
+	}
 }
 
 [class*="__container"] {
@@ -18,6 +27,7 @@ body {
 	overflow: hidden;
 	justify-content: center;
 	padding: 30px 0px;
+	background: url("../img/bg.jpg") 0 0 no-repeat;
 
 	// .weather__container
 
@@ -31,6 +41,8 @@ body {
 	// .weather__title
 
 	&__title {
+		display: flex;
+		align-items: center;
 		text-align: center;
 		font-size: 42px;
 		font-weight: 700;
@@ -39,6 +51,21 @@ body {
 		}
 		@media (max-width: 480px) {
 			font-size: 32px;
+		}
+		@media (max-width: 400px) {
+			display: block;
+		}
+		&::after {
+			content: "";
+			display: block;
+			margin: 0 auto;
+			width: 45px;
+			height: 45px;
+			background: url("../img/icons/sun.svg") 0 0 / cover no-repeat;
+			@media (max-width: 480px) {
+				width: 35px;
+				height: 35px;
+			}
 		}
 	}
 
@@ -65,8 +92,16 @@ body {
 		overflow: hidden;
 		max-width: 600px;
 		width: 100%;
-		border: 1px solid #000;
+		border: 2px solid $borderColor;
 		padding: 0px 15px;
+		background: rgba(255, 255, 255, 0.2);
+		box-shadow:
+			0px 40px 80px rgba(0, 0, 0, 0.1),
+			inset 0px 4px 2px rgba(255, 255, 255, 0.25),
+			inset 4px 4px 26px rgba(255, 255, 255, 0.25);
+		-webkit-backdrop-filter: blur(40px);
+		backdrop-filter: blur(40px);
+		border-radius: 16px;
 	}
 
 	// .weather__form
@@ -74,21 +109,39 @@ body {
 	&__form {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		gap: 10px;
 	}
 
 	// .weather__input
 
 	&__input {
+		background: transparent;
+		color: $mainColor;
 		width: 100%;
 		font-size: 16px;
 		padding: 10px 0;
+		&::placeholder {
+			color: $mainColor;
+		}
 	}
 
 	// .weather__btn
 
 	&__btn {
 		background: transparent;
+		width: 30px;
+		height: 30px;
+		transition: transform 0.3s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+		img {
+			max-width: 100%;
+			object-fit: cover;
+		}
 	}
 
 	// .weather__row
@@ -109,9 +162,9 @@ body {
 		flex-direction: column;
 		flex: 0 1 50%;
 		padding: 20px 15px;
-		border-top: 1px solid #000;
+		border-top: 2px solid $borderColor;
 		&:first-child {
-			border-right: 1px solid #000;
+			border-right: 2px solid $borderColor;
 			justify-content: space-between;
 		}
 		@media (max-width: 550px) {
@@ -174,6 +227,18 @@ body {
 
 	&__favourite-btn {
 		background: transparent;
+		height: 30px;
+		width: 30px;
+		transition: transform 0.3s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+		img {
+			max-width: 100%;
+			object-fit: cover;
+		}
 	}
 
 	// .weather__added-locations
@@ -182,7 +247,7 @@ body {
 		font-weight: 700;
 		padding: 0px 15px 20px 15px;
 		margin: 0px -15px 20px -15px;
-		border-bottom: 1px solid #000;
+		border-bottom: 2px solid $borderColor;
 	}
 
 	// .weather__favoutite-location

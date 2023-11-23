@@ -8,7 +8,7 @@ function defineLocation(e) {
 
 	const serverUrl = 'https://api.openweathermap.org/data/2.5/weather';
 	const cityName = inputValue;
-	const apiKey = 'f660a2fb1e4bad108d6160b7f58c555f&units=metric'; // этот ключ имеет ограничение в кол-ве запросов, если будут ошибки - придется сгенерировать новый или спросить в чате
+	const apiKey = 'c6a1e5e92f42e2b324df2c5a7dae3eb0&units=metric'; // этот ключ имеет ограничение в кол-ве запросов, если будут ошибки - придется сгенерировать новый или спросить в чате
 	const url = `${serverUrl}?q=${cityName}&appid=${apiKey}`;
 
 	fetch(url).then(response => response.json())
