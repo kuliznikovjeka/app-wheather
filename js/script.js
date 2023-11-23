@@ -35,7 +35,10 @@ function throwError(response) {
 }
 
 function changeLocation() {
-	ELEMENTS.CURRENT_LOCATION.textContent = ELEMENTS.SEARCH_INPUT.value;
+	let inputValue = ELEMENTS.SEARCH_INPUT.value;
+	inputValue = inputValue[0].toUpperCase() + inputValue.slice(1);
+
+	ELEMENTS.CURRENT_LOCATION.textContent = inputValue;
 }
 
 function resetInput(input) {
