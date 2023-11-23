@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Приложение погоды</title>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+	<section class="weather">
+		<div class="weather__container">
+			<h1 class="weather__title">Приложение погоды</h1>
+			<p class="weather__desc">Введите в поиск свой город и узнайте прогноз погоды !</p>
+			<div class="weather__wrapper">
+				<form class="weather__form">
+					<input class="weather__input" placeholder="Введите местоположение">
+					<button type="submit" class="weather__btn">
+						<img src="./img/loupe.svg" alt="Поиск (иконка лупы)">
+					</button>
+				</form>
+				<div class="weather__row">
+					<div class="weather__column">
+						<p class="weather__degrees">14°</p>
+						<div class="weather__precipitation">
+							<img src="./img/cloud.svg" alt="Иконка осадков">
+						</div>
+						<div class="weather__favourites">
+							<p class="weather__location">Aktobe</p>
+							<button class="weather__favourite-btn">
+								<img src="./img/heart.svg" alt="Кнопка избранное">
+							</button>
+						</div>
+					</div>
+					<div class="weather__column">
+						<p class="weather__added-locations">Добавленные локации:</p>
+						<p class="weather__favoutite-location">Ялта</p>
+						<p class="weather__favoutite-location">Воркута</p>
+						<p class="weather__favoutite-location">Нижний новгород</p>
+						<p class="weather__favoutite-location">Москва</p>
+						<p class="weather__favoutite-location">Ставрополь</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script type="module" src="./js/ui-elements.js"></script>
+	<script type="module" src="./js/script.js"></script>
+</body>
+
+</html>
