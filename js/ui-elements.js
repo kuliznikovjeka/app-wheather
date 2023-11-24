@@ -5,5 +5,8 @@ export const ELEMENTS = {
 	DEGREES: document.querySelector('.weather__degrees'),
 	ICON_WHEATHER: document.querySelector('.weather__precipitation'),
 	DEGREES_CELSIUS: '°',
+	WHEATHER_LIST: document.querySelector('.weather__list'),
+	WHEATHER_LOCATION: document.querySelector('.weather__location'),
+	FAVOURITE_BTN: document.querySelector('.weather__favourite-btn'),
 }
 

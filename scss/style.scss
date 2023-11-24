@@ -27,7 +27,7 @@ body {
 	overflow: hidden;
 	justify-content: center;
 	padding: 30px 0px;
-	background: url("../img/bg.jpg") 0 0 no-repeat;
+	background: linear-gradient(#aea4e3, #d3ffe8);
 
 	&__container {
 		display: flex;
@@ -251,8 +251,61 @@ body {
 	// .weather__favoutite-location
 
 	&__favoutite-location {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 5px 15px;
 		&:not(:last-child) {
 			margin-bottom: 15px;
+		}
+	}
+
+	// .weather__location-name
+	&__location-name {
+		cursor: pointer;
+	}
+
+	&__remove-btn {
+		cursor: pointer;
+		position: relative;
+		width: 24px;
+		height: 24px;
+		background: transparent;
+		transition: transform 0.3s ease 0s;
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 0;
+			width: 24px;
+			height: 4px;
+			background: gray;
+			border-radius: 2px;
+			@media (max-width: 480px) {
+				width: 20px;
+				top: 30%;
+			}
+		}
+		&::before {
+			content: "";
+			transform: rotate(45deg);
+		}
+		&::after {
+			content: "";
+			transform: rotate(-45deg);
+		}
+		@media (max-width: 480px) {
+			width: 20px;
+			height: 20px;
+			padding: 0 15px;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				transform: scale(1.15);
+			}
 		}
 	}
 }
