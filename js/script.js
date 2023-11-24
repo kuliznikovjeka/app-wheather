@@ -5,8 +5,8 @@ ELEMENTS.FAVOURITE_BTN.addEventListener('click', addFavouriteLocation);
 ELEMENTS.WHEATHER_LIST.addEventListener('click', deleteLocation);
 ELEMENTS.WHEATHER_LIST.addEventListener('click', chooseLocation);
 
-
 const listLocations = ['Ялта', 'Воркута'];
+render(listLocations);
 
 function render(listLocations) {
 	ELEMENTS.WHEATHER_LIST.replaceChildren();
@@ -20,12 +20,8 @@ function render(listLocations) {
 	}
 }
 
-render(listLocations);
-
-
 function defineLocation(e) {
 	e.preventDefault();
-	// const favouriteLocation = chooseLocation();
 	const inputValue = ELEMENTS.SEARCH_INPUT.value.trim();
 
 	const serverUrl = 'https://api.openweathermap.org/data/2.5/weather';
@@ -91,7 +87,8 @@ function chooseLocation(e) {
 	if (!e.target.classList.contains('weather__location-name')) return;
 
 	const targetValue = e.target.textContent;
-	return ELEMENTS.SEARCH_INPUT.value = targetValue;
+	ELEMENTS.SEARCH_INPUT.value = targetValue;
+	defineLocation(e);
 }
 
 function buildElement(tagName, className, text) {
