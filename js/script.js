@@ -1,11 +1,14 @@
-import { ELEMENTS } from './ui-elements.js';
+import { ELEMENTS, VALUES_VARS } from './ui-elements.js';
+import { DATA_API } from './data-api.js';
 
 ELEMENTS.FORM.addEventListener('submit', defineLocation);
+ELEMENTS.FORM.addEventListener('submit', defineWeatherDetails);
 ELEMENTS.FAVOURITE_BTN.addEventListener('click', addFavouriteLocation);
 ELEMENTS.WHEATHER_LIST.addEventListener('click', deleteLocation);
 ELEMENTS.WHEATHER_LIST.addEventListener('click', chooseLocation);
 
-const listLocations = ['Ялта', 'Воркута'];
+const listLocations = ['Ялта', 'Воркута', 'Москва', 'Нижний Новгород'];
+
 render(listLocations);
 
 function render(listLocations) {
@@ -23,26 +26,68 @@ function render(listLocations) {
 function defineLocation(e) {
 	e.preventDefault();
 	const inputValue = ELEMENTS.SEARCH_INPUT.value.trim();
-
-	const serverUrl = 'https://api.openweathermap.org/data/2.5/weather';
 	const cityName = inputValue;
-	const apiKey = 'c6a1e5e92f42e2b324df2c5a7dae3eb0&units=metric';
-	const url = `${serverUrl}?q=${cityName}&appid=${apiKey}`;
+	const url = `${DATA_API.serverUrl}?q=${cityName}&appid=${DATA_API.apiKey}`;
 
 	fetch(url).then(response => {
 		throwError(response)
 		return response.json()
 	})
 		.then(data => {
+			const degrees = Math.round(data.main['temp']) + VALUES_VARS.DEGREES_CELSIUS;
 			const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0]['icon']}@4x.png`;
-			ELEMENTS.DEGREES.textContent = Math.round(data.main['temp']) + ELEMENTS.DEGREES_CELSIUS;
+			const feelsLike = VALUES_VARS.FEELS_LIKE + Math.round(data.main['feels_like']) + VALUES_VARS.DEGREES_CELSIUS;
+
+			const sunriseHours = String(new Date(data.sys['sunrise'] * 1000).getHours()).padStart(2, '0');
+			const sunriseMinutes = String(new Date(data.sys['sunrise'] * 1000).getMinutes()).padStart(2, '0');
+
+			const sunsetHours = String(new Date(data.sys['sunset'] * 1000).getHours()).padStart(2, '0');
+			const sunsetMinutes = String(new Date(data.sys['sunset'] * 1000).getMinutes()).padStart(2, '0');
+
+			const sunrise = VALUES_VARS.SUNRISE + sunriseHours + ':' + sunriseMinutes;
+			const sunset = VALUES_VARS.SUNSET + sunsetHours + ':' + sunsetMinutes;
+
+			ELEMENTS.DEGREES.textContent = degrees;
 			ELEMENTS.ICON_WHEATHER.firstElementChild.src = iconUrl;
+			ELEMENTS.WEATHER_FEELS_LIKE.textContent = feelsLike;
+			ELEMENTS.SUNRISE.textContent = sunrise;
+			ELEMENTS.SUNSET.textContent = sunset;
 			changeLocation();
 		})
 		.catch(error => {
 			alert(error)
 		})
 		.finally(() => resetInput(ELEMENTS.SEARCH_INPUT));
+}
+
+function defineWeatherDetails(e) {
+	e.preventDefault();
+	const inputValue = ELEMENTS.SEARCH_INPUT.value.trim();
+	const cityName = inputValue;
+
+	const url = `${DATA_API.forecastServerUrl}?q=${cityName}&appid=${DATA_API.apiKey}`;
+
+	fetch(url).then(response => response.json())
+
+		.then(data => {
+
+			ELEMENTS.DETAIL_TIMES.forEach((time, i) => {
+				time.textContent = data.list[i].dt_txt.slice(0, 16);
+			});
+
+			ELEMENTS.DETAIL_TEPUTURE.forEach((temputure, i) => {
+				temputure.textContent = VALUES_VARS.TEMPUTURE + Math.round(data.list[i].main['temp']) + VALUES_VARS.DEGREES_CELSIUS;
+			})
+
+			ELEMENTS.DETAIL_FEELS_LIKE.forEach((temputure, i) => {
+				temputure.textContent = VALUES_VARS.FEELS_LIKE + Math.round(data.list[i].main['feels_like']) + VALUES_VARS.DEGREES_CELSIUS;
+			})
+
+			ELEMENTS.DETAIL_ICON.forEach((iconWeather, i) => {
+				iconWeather.firstElementChild.src = `https://openweathermap.org/img/wn/${data.list[i].weather[0]['icon']}@2x.png`;
+			})
+			
+		})
 }
 
 function throwError(response) {
@@ -89,6 +134,7 @@ function chooseLocation(e) {
 	const targetValue = e.target.textContent;
 	ELEMENTS.SEARCH_INPUT.value = targetValue;
 	defineLocation(e);
+	defineWeatherDetails(e);
 }
 
 function buildElement(tagName, className, text) {

@@ -163,7 +163,6 @@ body {
 		border-top: 2px solid $borderColor;
 		&:first-child {
 			border-right: 2px solid $borderColor;
-			justify-content: space-between;
 		}
 		@media (max-width: 550px) {
 			&:first-child {
@@ -172,38 +171,52 @@ body {
 		}
 	}
 
+	// .weather__show
+	&__show {
+		display: flex;
+		align-items: center;
+		&:not(:last-child) {
+			margin-bottom: 35px;
+		}
+	}
+
 	// .weather__degrees
 
 	&__degrees {
-		align-self: start;
 		font-size: 70px;
 		line-height: (76/70 * 100%);
-		&:not(:last-child) {
-			margin-bottom: 40px;
-		}
-		@media (max-width: 480px) {
-			font-size: 50px;
-		}
 	}
 
 	// .weather__precipitation
 
 	&__precipitation {
 		font-size: 14px;
-		margin: 0 auto;
-		max-width: 160px;
-		max-height: 160px;
+		max-width: 120px;
+		max-height: 120px;
 		&:not(:last-child) {
 			margin-bottom: 60px;
-		}
-		@media (max-width: 480px) {
-			max-width: 120px;
-			max-height: 120px;
 		}
 		img {
 			max-width: 100%;
 			object-fit: cover;
 		}
+		@media (max-width: 480px) {
+			max-width: 120px;
+			max-height: 120px;
+		}
+	}
+
+	// .weather__inform
+
+	&__inform {
+		&:not(:last-child) {
+			margin-bottom: 35px;
+		}
+	}
+
+	// .weather__details
+
+	&__details {
 	}
 
 	// .weather__favourites
@@ -212,6 +225,9 @@ body {
 		display: flex;
 		justify-content: space-between;
 		gap: 10px;
+		&:not(:last-child) {
+			margin-bottom: 30px;
+		}
 	}
 
 	// .weather__location
@@ -306,6 +322,74 @@ body {
 			&:hover {
 				transform: scale(1.15);
 			}
+		}
+	}
+}
+
+.inform-weather {
+	// .inform-weather__list
+
+	&__list {
+	}
+
+	// .inform-weather__item
+
+	&__item {
+		font-size: 22px;
+		&:not(:last-child) {
+			margin-bottom: 10px;
+		}
+	}
+}
+
+.details-weather {
+	// .details-weather__item
+
+	&__item {
+		padding-bottom: 10px;
+		border: 1px solid $borderColor;
+		padding: 15px;
+		border-radius: 8px;
+		&:not(:last-child) {
+			margin-bottom: 30px;
+		}
+	}
+
+	// .details-weather__label
+
+	&__label {
+		font-size: 16px;
+		&:not(:last-child) {
+			margin-bottom: 5px;
+		}
+		&_time {
+			&:not(:last-child) {
+				margin-bottom: 15px;
+			}
+		}
+	}
+
+	// .details-weather__row
+
+	&__row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+	}
+
+	// .details-weather__values
+
+	&__values {
+	}
+
+	// .details-weather__icon
+
+	&__icon {
+		max-width: 50px;
+		img {
+			max-width: 100%;
+			object-fit: cover;
 		}
 	}
 }

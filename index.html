@@ -23,15 +23,65 @@
 				</form>
 				<div class="weather__row">
 					<div class="weather__column">
-						<p class="weather__degrees">14°</p>
-						<div class="weather__precipitation">
-							<img src="./img/icons/cloud.svg" alt="Иконка осадков">
-						</div>
 						<div class="weather__favourites">
 							<p class="weather__location">Aktobe</p>
 							<button class="weather__favourite-btn">
 								<img src="./img/icons/heart4.svg" alt="Кнопка избранное">
 							</button>
+						</div>
+						<div class="weather__show">
+							<p class="weather__degrees">14°</p>
+							<div class="weather__precipitation">
+								<img src="./img/icons/cloud.svg" alt="Иконка осадков">
+							</div>
+						</div>
+						<div class="weather__inform inform-weather">
+							<ul class="inform-weather__list">
+								<li id="feels-like" class="inform-weather__item">Feels like: 10</li>
+								<li id="sunrise" class="inform-weather__item">Sunrise: 03:21</li>
+								<li id="sunset" class="inform-weather__item">Sunset: 18:54</li>
+							</ul>
+						</div>
+						<div class="weather__details details-weather">
+							<div class="details-weather__item">
+								<p class="details-weather__label details-weather__time details-weather__label_time">12:00</p>
+								<div class="details-weather__row">
+									<div class="details-weather__values">
+										<p class="details-weather__label details-weather__temputure">Temperature: 13</p>
+										<p class="details-weather__label details-weather__feelslike">Feels like: 11</p>
+									</div>
+									<div class="details-weather__icon">
+										<img src="./img/icons/cloud.svg" alt="">
+									</div>
+								</div>
+							</div>
+							<div class="details-weather__item">
+								<p class="details-weather__label details-weather__time details-weather__label_time">12:00</p>
+								<div class="details-weather__row">
+									<div class="details-weather__values">
+										<p class="details-weather__label details-weather__temputure">Temperature: 13</p>
+										<p class="details-weather__label details-weather__feelslike">Feels like: 11</p>
+									</div>
+									<div class="details-weather__icon">
+										<img src="./img/icons/cloud.svg" alt="">
+									</div>
+								</div>
+							</div>
+							<div class="details-weather__item">
+								<p id="detail-time-1"
+									class="details-weather__label details-weather__time details-weather__label_time">12:00</p>
+								<div class="details-weather__row">
+									<div class="details-weather__values">
+										<p id="detail-temputure-1" class="details-weather__label details-weather__temputure">
+											Temperature: 13</p>
+										<p id="detail-feels-like-1" class="details-weather__label details-weather__feelslike">
+											Feels like: 11</p>
+									</div>
+									<div class="details-weather__icon">
+										<img src="./img/icons/cloud.svg" alt="">
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="weather__column">
@@ -48,6 +98,7 @@
 		</div>
 	</section>
 	<script type="module" src="./js/ui-elements.js"></script>
+	<script type="module" src="./js/data-api.js"></script>
 	<script type="module" src="./js/script.js"></script>
 </body>
 
