@@ -11,7 +11,6 @@ const ELEMENTS = {
 	WEATHER_FEELS_LIKE: document.querySelector('#feels-like'),
 	SUNRISE: document.querySelector('#sunrise'),
 	SUNSET: document.querySelector('#sunset'),
-	DETAIL_TIME_1: document.querySelector('#detail-time-1'),
 	DETAIL_TIMES: document.querySelectorAll('.details-weather__time'),
 	DETAIL_TEPUTURE: document.querySelectorAll('.details-weather__temputure'),
 	DETAIL_FEELS_LIKE: document.querySelectorAll('.details-weather__feelslike'),

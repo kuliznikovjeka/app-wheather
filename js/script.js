@@ -1,5 +1,9 @@
+import { buildElement } from './build-element.js';
 import { ELEMENTS, VALUES_VARS } from './ui-elements.js';
 import { DATA_API } from './data-api.js';
+import { setterStorage, getLocationFromStorage } from './local-storage.js';
+import { throwError } from './errors.js';
+// import { setterStorage, getLocationFromStorage } from './storage-information.js';
 
 ELEMENTS.FORM.addEventListener('submit', defineLocation);
 ELEMENTS.FORM.addEventListener('submit', defineWeatherDetails);
@@ -7,9 +11,10 @@ ELEMENTS.FAVOURITE_BTN.addEventListener('click', addFavouriteLocation);
 ELEMENTS.WHEATHER_LIST.addEventListener('click', deleteLocation);
 ELEMENTS.WHEATHER_LIST.addEventListener('click', chooseLocation);
 
-const listLocations = ['Ялта', 'Воркута', 'Москва', 'Нижний Новгород'];
+// const listLocations = ['Ялта', 'Воркута', 'Москва', 'Нижний Новгород'];
+const listLocations = getLocationFromStorage();
 
-render(listLocations);
+render(listLocations)
 
 function render(listLocations) {
 	ELEMENTS.WHEATHER_LIST.replaceChildren();
@@ -21,6 +26,7 @@ function render(listLocations) {
 		li.append(p, btn);
 		ELEMENTS.WHEATHER_LIST.append(li);
 	}
+
 }
 
 function defineLocation(e) {
@@ -86,15 +92,8 @@ function defineWeatherDetails(e) {
 			ELEMENTS.DETAIL_ICON.forEach((iconWeather, i) => {
 				iconWeather.firstElementChild.src = `https://openweathermap.org/img/wn/${data.list[i].weather[0]['icon']}@2x.png`;
 			})
-			
+			console.log(data);
 		})
-}
-
-function throwError(response) {
-	if (response.status === 404) throw new Error('Локация не найдена');
-	if (response.status === 400) throw new Error('Неправильный запрос от пользователя');
-	if (response.status === 401) throw new Error('Неавторизованный запрос от пользователя');
-	if (response.status === 500) throw new Error('Ошибка сервера');
 }
 
 function changeLocation() {
@@ -114,6 +113,7 @@ function addFavouriteLocation(location) {
 	if (listLocations.includes(location)) return;
 
 	listLocations.push(location);
+	setterStorage(listLocations)
 	render(listLocations);
 }
 
@@ -125,6 +125,7 @@ function deleteLocation(e) {
 	const elementPosition = listLocations.indexOf(locationName.textContent);
 	listLocations.splice(elementPosition, oneElement);
 
+	setterStorage(listLocations)
 	render(listLocations);
 }
 
@@ -137,10 +138,4 @@ function chooseLocation(e) {
 	defineWeatherDetails(e);
 }
 
-function buildElement(tagName, className, text) {
-	const tag = document.createElement(tagName);
-	tag.classList.add(className);
-	tag.textContent = text;
-	return tag
-}
 
