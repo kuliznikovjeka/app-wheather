@@ -1,15 +1,23 @@
 import { buildElement } from './build-element.js';
 import { ELEMENTS, VALUES_VARS } from './ui-elements.js';
 import { DATA_API } from './data-api.js';
-import { setterStorage, getLocationFromStorage } from './local-storage.js';
+import { setterStorage, getLocationFromStorage, setLastCity, getLastCity } from './local-storage.js';
 import { throwError } from './errors.js';
-// import { setterStorage, getLocationFromStorage } from './storage-information.js';
 
 ELEMENTS.FORM.addEventListener('submit', defineLocation);
 ELEMENTS.FORM.addEventListener('submit', defineWeatherDetails);
 ELEMENTS.FAVOURITE_BTN.addEventListener('click', addFavouriteLocation);
 ELEMENTS.WHEATHER_LIST.addEventListener('click', deleteLocation);
 ELEMENTS.WHEATHER_LIST.addEventListener('click', chooseLocation);
+
+window.addEventListener('load', function (e) {
+	const lastCity = getLastCity();
+	if (lastCity) {
+		ELEMENTS.SEARCH_INPUT.value = lastCity;
+		defineLocation(e);
+		defineWeatherDetails(e);
+	}
+});
 
 // const listLocations = ['Ялта', 'Воркута', 'Москва', 'Нижний Новгород'];
 const listLocations = getLocationFromStorage();
@@ -34,6 +42,7 @@ function defineLocation(e) {
 	const inputValue = ELEMENTS.SEARCH_INPUT.value.trim();
 	const cityName = inputValue;
 	const url = `${DATA_API.serverUrl}?q=${cityName}&appid=${DATA_API.apiKey}`;
+	setLastCity(cityName);
 
 	fetch(url).then(response => {
 		throwError(response)
@@ -92,7 +101,7 @@ function defineWeatherDetails(e) {
 			ELEMENTS.DETAIL_ICON.forEach((iconWeather, i) => {
 				iconWeather.firstElementChild.src = `https://openweathermap.org/img/wn/${data.list[i].weather[0]['icon']}@2x.png`;
 			})
-			console.log(data);
+
 		})
 }
 

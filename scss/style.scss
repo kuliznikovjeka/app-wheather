@@ -335,7 +335,7 @@ body {
 	// .inform-weather__item
 
 	&__item {
-		font-size: 22px;
+		font-size: 18px;
 		&:not(:last-child) {
 			margin-bottom: 10px;
 		}
@@ -351,7 +351,7 @@ body {
 		padding: 15px;
 		border-radius: 8px;
 		&:not(:last-child) {
-			margin-bottom: 30px;
+			margin-bottom: 15px;
 		}
 	}
 

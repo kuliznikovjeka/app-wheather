@@ -502,7 +502,7 @@ body {
 }
 
 .inform-weather__item {
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .inform-weather__item:not(:last-child) {
@@ -517,7 +517,7 @@ body {
 }
 
 .details-weather__item:not(:last-child) {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .details-weather__label {
