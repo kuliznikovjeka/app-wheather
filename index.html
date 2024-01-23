@@ -5,126 +5,125 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Приложение погоды</title>
-	<link rel="stylesheet" href="./css/tabs.css">
-	<link rel="stylesheet" href="./css/style.css">
+	<title>Web-Messanger</title>
+	<link rel="stylesheet" href="index.ad91df8f.css">
 </head>
 
+
 <body>
-	<section class="weather">
-		<div class="weather__container">
-			<h1 class="weather__title">Приложение погоды</h1>
-			<p class="weather__desc">Введите в поиск свой город и узнайте прогноз погоды!</p>
-			<div class="weather__wrapper">
-				<form class="weather__form">
-					<input class="weather__input" placeholder="Введите местоположение">
-					<button type="submit" class="weather__btn">
-						<img src="./img/icons/loupe2.svg" alt="Поиск (иконка лупы)">
-					</button>
-				</form>
-				<div class="weather__row">
-					<div class="weather__column">
-						<div class="tabs">
-							<div class="tabs__content tabs__content_active" data-tabs-target="now">
-								<div class="content">
-									<div class="weather__favourites">
-										<p class="weather__location">Aktobe</p>
-										<button class="weather__favourite-btn">
-											<img src="./img/icons/heart4.svg" alt="Кнопка избранное">
-										</button>
-									</div>
-									<div class="weather__show">
-										<p class="weather__degrees">14°</p>
-										<div class="weather__precipitation">
-											<img src="./img/icons/cloud.svg" alt="Иконка осадков">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="tabs__content" data-tabs-target="details">
-								<div class="content">
-									<div class="weather__inform inform-weather">
-										<ul class="inform-weather__list">
-											<li id="feels-like" class="inform-weather__item">Feels like: 10</li>
-											<li id="sunrise" class="inform-weather__item">Sunrise: 03:21</li>
-											<li id="sunset" class="inform-weather__item">Sunset: 18:54</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="tabs__content" data-tabs-target="forecast">
-								<div class="content">
-									<div class="weather__details details-weather">
-										<div class="details-weather__item">
-											<p class="details-weather__label details-weather__time details-weather__label_time">
-												12:00</p>
-											<div class="details-weather__row">
-												<div class="details-weather__values">
-													<p class="details-weather__label details-weather__temputure">Temperature: 13</p>
-													<p class="details-weather__label details-weather__feelslike">Feels like: 11</p>
-												</div>
-												<div class="details-weather__icon">
-													<img src="./img/icons/cloud.svg" alt="">
-												</div>
-											</div>
-										</div>
-										<div class="details-weather__item">
-											<p class="details-weather__label details-weather__time details-weather__label_time">
-												12:00</p>
-											<div class="details-weather__row">
-												<div class="details-weather__values">
-													<p class="details-weather__label details-weather__temputure">Temperature: 13</p>
-													<p class="details-weather__label details-weather__feelslike">Feels like: 11</p>
-												</div>
-												<div class="details-weather__icon">
-													<img src="./img/icons/cloud.svg" alt="">
-												</div>
-											</div>
-										</div>
-										<div class="details-weather__item">
-											<p id="detail-time-1"
-												class="details-weather__label details-weather__time details-weather__label_time">
-												12:00</p>
-											<div class="details-weather__row">
-												<div class="details-weather__values">
-													<p id="detail-temputure-1"
-														class="details-weather__label details-weather__temputure">
-														Temperature: 13</p>
-													<p id="detail-feels-like-1"
-														class="details-weather__label details-weather__feelslike">
-														Feels like: 11</p>
-												</div>
-												<div class="details-weather__icon">
-													<img src="./img/icons/cloud.svg" alt="">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<ul class="tabs__list">
-								<li class="tabs__item"><button class="tabs__btn tabs__btn_active"
-										data-tabs-path="now">Сейчас</button></li>
-								<li class="tabs__item"><button class="tabs__btn" data-tabs-path="details">Детали</button></li>
-								<li class="tabs__item"><button class="tabs__btn" data-tabs-path="forecast">Прогноз</button></li>
-							</ul>
-						</div>
+	<div class="wrapper">
+		<main class="main">
+			<section class="communication">
+				<div class="communication__container">
+					<div class="communication__top-actions top-actions-communication">
+						<button class="top-actions-communication__btn-settings btn-action"
+							data-path="modal-one">Настройки</button>
+						<button class="top-actions-communication__btn-exit btn-action">Выйти</button>
 					</div>
-					<div class="weather__column">
-						<p class="weather__added-locations">Добавленные локации:</p>
-						<ul class="weather__list">
-							<li class="weather__favoutite-location">Сработает рендер</li>
+					<div class="communication__messages-area area-messages">
+						<ul class="area-messages__list">
+							<template id="message">
+								<li class="area-messages__message">
+									<div class="area-messages__send-from">
+										<div class="user-message__wrapper">
+											<div class="user-message__inner">
+												<span class="user-message__user">Я:</span>
+												<p class="user-message__message">Добрый день!</p>
+											</div>
+											<div class="area-messages__send-time">18:45</div>
+										</div>
+									</div>
+								</li>
+							</template>
 						</ul>
 					</div>
+					<div class="communication__footer-actions footer-actions-communication">
+						<form class="footer-actions-communication__form">
+							<input placeholder="Введите сообщение" type="text"
+								class="footer-actions-communication__input border">
+							<button class="footer-actions-communication__btn-send-message hide">
+								<img src="send-message.331a37e3.svg" alt="Иконка отправления сообщения">
+							</button>
+						</form>
+					</div>
+				</div>
+			</section>
+			<dialog id="authorization" class="authorization">
+				<div class="authorization__body">
+					<h3 class="authorization__title">Авторизация</h3>
+					<form id="authorization-form" class="authorization__form">
+						<div id="authorization-wrapper" class="authorization__wrapper">
+							<label class="authorization__email">Почта:</label>
+							<input placeholder="Введите почту" type="email" id="input-email" class="authorization__input">
+							<p class="authorization-error">ОШИБКА! Неправильно введена почта</p>
+							<p class="authorization-success">УСПЕШНО! Код для входа отправлен на почту</p>
+						</div>
+						<div class="authorization__actions">
+							<button class="authorization__btn btn-action">Получить код</button>
+							<button id="btn-inter-code" type="button" class="authorization__btn btn-action">Ввести код</button>
+						</div>
+					</form>
+				</div>
+			</dialog>
+			<dialog id="log-in" class="authorization hidden">
+				<div class="authorization__body">
+					<h3 class="authorization__title">Подтверждение</h3>
+					<form id="form-log-in" action="" class="authorization__form">
+						<div class="authorization__wrapper">
+							<label for="" class="authorization__email">Код:</label>
+							<input placeholder="Введите код" type="text" id="input-code" class="authorization__input">
+							<p id="error-token" class="authorization-error">ОШИБКА! Неправильный код</p>
+						</div>
+						<div class="authorization__actions">
+							<button class="authorization__btn btn-action">Войти</button>
+							<button type="button" id="btn-come-back" class="authorization__btn btn-action">Назад</button>
+						</div>
+					</form>
+				</div>
+			</dialog>
+		</main>
+		<div class="modals">
+			<div class="modal-overlay">
+				<div class="modal settings-modal" data-target="modal-one">
+					<div class="settings-modal__top top-modal-settings">
+						<div class="top-modal-settings__exit">
+							<img class="top-modal-settings__close" src="close.513bf164.svg"
+								alt="Иконка закрытия модального окна">
+						</div>
+						<div class="top-modal-settings__label">Настройки</div>
+					</div>
+					<div class="top-modal-settings__nickname">Имя в чате</div>
+					<form id="form-change-name" class="top-modal-settings__form">
+						<input id="input-change-name" type="text" class="top-modal-settings__input">
+						<button class="top-modal-settings__btn-change-user">
+							<img src="send-message.331a37e3.svg" alt="Иконка отправления сообщения">
+						</button>
+					</form>
+					<p class="top-modal-settings__success">УСПЕШНО! Имя изменено</p>
+				</div>
+				<div class="modal settings-modal" data-target="authorization">
+					<div class="settings-modal__top top-modal-settings">
+						<div class="top-modal-settings__exit">
+							<img class="top-modal-settings__close" src="close.513bf164.svg"
+								alt="Иконка закрытия модального окна">
+						</div>
+						<div class="top-modal-settings__label">Настройки</div>
+					</div>
+					<div class="top-modal-settings__nickname">Имя в чате</div>
+					<form class="top-modal-settings__form">
+						<input type="text" class="top-modal-settings__input">
+						<button class="top-modal-settings__btn-change-user">
+							<img src="send-message.331a37e3.svg" alt="Иконка отправления сообщения">
+						</button>
+					</form>
 				</div>
 			</div>
 		</div>
-	</section>
-	<script type="module" src="./js/tabs.js"></script>
-	<script type="module" src="./js/ui-elements.js"></script>
-	<script type="module" src="./js/local-storage.js"></script>
-	<script type="module" src="./js/data-api.js"></script>
-	<script type="module" src="./js/script.js"></script>
+	</div>
+
+	<script async="" src="index.2a7c2198.js" defer=""></script>
+	<script src="index.ac5606db.js" defer=""></script>
+	<script src="index.fbb3188c.js" defer=""></script>
 </body>
 
 </html>
